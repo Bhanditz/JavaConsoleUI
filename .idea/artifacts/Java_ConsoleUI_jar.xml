@@ -4,7 +4,6 @@
     <root id="archive" name="Java ConsoleUI.jar">
       <element id="module-output" name="Java ConsoleUI" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/jansi-1.16.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jline/jline/3.3.0/jline-3.3.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

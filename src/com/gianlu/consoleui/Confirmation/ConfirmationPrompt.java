@@ -39,7 +39,7 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
 
     @Override
     protected void handleInvalidInput(@Nullable String input, PrintStream out) {
-        out.println(ansi().bg(Ansi.Color.RED).a(input + " is not a valid choice. Please answer Y or N."));
+        out.println(ansi().bg(Ansi.Color.RED).a("\"" + input + "\" is not a valid choice. Please enter Y or N."));
     }
 
     public static class Builder {
