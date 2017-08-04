@@ -1,10 +1,12 @@
 package com.gianlu.consoleui;
 
+import com.gianlu.consoleui.Choice.ChoicePrompt;
 import com.gianlu.consoleui.Confirmation.ConfirmationPrompt;
 import com.gianlu.consoleui.Confirmation.Value;
 import com.gianlu.consoleui.Input.InputPrompt;
 import com.gianlu.consoleui.Input.InputValidator;
 import org.fusesource.jansi.AnsiConsole;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -27,13 +29,20 @@ public class Test {
                         .required(true)
                         .text("What's your name?")
                         .build(),
+                new ChoicePrompt.Builder()
+                        .name("gender")
+                        .text("What's your gender?")
+                        .newItem().name("male").key('m').text("Male").add()
+                        .newItem().name("female").key('f').text("Female").add()
+                        .newItem().name("unknown").key('u').text("Unknown").add()
+                        .build(),
                 new InputPrompt.Builder()
                         .name("website")
                         .required(false)
                         .text("What's your website address?")
                         .validator(new InputValidator() {
                             @Override
-                            public void validate(String input) throws InvalidInputException {
+                            public void validate(@NotNull String input) throws InvalidInputException {
                                 try {
                                     new URL(input);
                                 } catch (MalformedURLException e) {

@@ -1,9 +1,11 @@
 package com.gianlu.consoleui.Input;
 
+import com.gianlu.consoleui.Choice.ChoicePrompt;
 import com.gianlu.consoleui.InvalidInputException;
 import com.gianlu.consoleui.PromptableInputElement;
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
+import com.gianlu.consoleui.Required;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.fusesource.jansi.Ansi;
 
 import java.io.PrintStream;
@@ -40,7 +42,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
         out.println(ansi().bg(Ansi.Color.RED).a(msg));
     }
 
-    public static class Builder {
+    public static class Builder implements GeneralBuilder<InputPrompt> {
         private String name;
         private String text;
         private InputValidator validator;
@@ -49,6 +51,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
         public Builder() {
         }
 
+        @Required
         public Builder name(@NotNull String name) {
             this.name = name;
             return this;
@@ -59,6 +62,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
             return this;
         }
 
+        @Required
         public Builder text(@NotNull String text) {
             this.text = text;
             return this;
@@ -69,6 +73,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
             return this;
         }
 
+        @Override
         public InputPrompt build() {
             return new InputPrompt(name, text, validator, required);
         }

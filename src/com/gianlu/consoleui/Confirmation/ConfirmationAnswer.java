@@ -1,7 +1,7 @@
 package com.gianlu.consoleui.Confirmation;
 
 import com.gianlu.consoleui.Answer;
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 public class ConfirmationAnswer extends Answer {
     private final Value value;

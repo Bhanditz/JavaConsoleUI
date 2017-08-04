@@ -1,7 +1,7 @@
 package com.gianlu.consoleui.Input;
 
 import com.gianlu.consoleui.InvalidInputException;
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 public interface InputValidator {
 

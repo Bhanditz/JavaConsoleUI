@@ -1,7 +1,7 @@
 package com.gianlu.consoleui;
 
 import com.gianlu.consoleui.Input.InputValidator;
-import com.sun.istack.internal.Nullable;
+import org.jetbrains.annotations.Nullable;
 import org.fusesource.jansi.Ansi;
 
 import java.io.*;

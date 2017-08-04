@@ -1,9 +1,11 @@
 package com.gianlu.consoleui.Confirmation;
 
+import com.gianlu.consoleui.Choice.ChoicePrompt;
 import com.gianlu.consoleui.InvalidInputException;
 import com.gianlu.consoleui.PromptableInputElement;
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
+import com.gianlu.consoleui.Required;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.fusesource.jansi.Ansi;
 
 import java.io.PrintStream;
@@ -43,7 +45,7 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
 
     @Override
     public String formatText(String text) {
-        return "? " + text + " (" + formatChoice() + ") ";
+        return "? " + text + " (" + formatChoice() + "): ";
     }
 
     @Override
@@ -51,7 +53,7 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
         out.println(ansi().bg(Ansi.Color.RED).a("\"" + input + "\" is not a valid choice. Please enter Y or N."));
     }
 
-    public static class Builder {
+    public static class Builder implements GeneralBuilder<ConfirmationPrompt> {
         private String name;
         private String text;
         private Value defaultValue;
@@ -59,6 +61,7 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
         public Builder() {
         }
 
+        @Required
         public Builder name(@NotNull String name) {
             this.name = name;
             return this;
@@ -69,11 +72,13 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
             return this;
         }
 
+        @Required
         public Builder text(@NotNull String text) {
             this.text = text;
             return this;
         }
 
+        @Override
         public ConfirmationPrompt build() {
             return new ConfirmationPrompt(name, text, defaultValue);
         }
