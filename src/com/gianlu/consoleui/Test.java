@@ -1,32 +1,46 @@
 package com.gianlu.consoleui;
 
-import com.gianlu.consoleui.Confirmation.ConfirmationAnswer;
 import com.gianlu.consoleui.Confirmation.ConfirmationPrompt;
-import com.gianlu.consoleui.Input.InputAnswer;
+import com.gianlu.consoleui.Confirmation.Value;
 import com.gianlu.consoleui.Input.InputPrompt;
+import com.gianlu.consoleui.Input.InputValidator;
 import org.fusesource.jansi.AnsiConsole;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws IOException {
         AnsiConsole.systemInstall();
 
         ConsolePrompt prompt = new ConsolePrompt();
-        ConfirmationAnswer answer = prompt.prompt(new ConfirmationPrompt.Builder()
-                .name("prova124")
-                .text("This is a test. Ok?")
-                .defaultVal(false)
-                .build());
+        List<? extends Answer> answers = prompt.prompt(
+                new ConfirmationPrompt.Builder()
+                        .name("test")
+                        .text("This is a test. Ok?")
+                        .defaultValue(Value.YES)
+                        .build(),
+                new InputPrompt.Builder()
+                        .name("name")
+                        .text("What's your name?")
+                        .build(),
+                new InputPrompt.Builder()
+                        .name("website")
+                        .text("What's your website address?")
+                        .validator(new InputValidator() {
+                            @Override
+                            public void validate(String input) throws InvalidInputException {
+                                try {
+                                    new URL(input);
+                                } catch (MalformedURLException e) {
+                                    throw new InvalidInputException("Not a valid address!", true);
+                                }
+                            }
+                        })
+                        .build());
 
-        InputAnswer answer1 = prompt.prompt(new InputPrompt.Builder()
-                .name("prova7")
-                .text("What's your name?")
-                .build());
-
-        System.out.println("ANSWER: " + answer.isConfirmed());
-        System.out.println("ANSWER1: " + answer1.getAnswer());
-
-        main(args);
+        System.out.println("ANSWERS: " + answers);
     }
 }

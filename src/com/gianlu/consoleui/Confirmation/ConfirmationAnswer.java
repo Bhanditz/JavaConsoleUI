@@ -1,16 +1,30 @@
 package com.gianlu.consoleui.Confirmation;
 
 import com.gianlu.consoleui.Answer;
+import com.sun.istack.internal.NotNull;
 
 public class ConfirmationAnswer extends Answer {
-    private final boolean confirmed;
+    private final Value value;
 
-    public ConfirmationAnswer(String name, boolean confirmed) {
+    public ConfirmationAnswer(String name, @NotNull Value value) {
         super(name);
-        this.confirmed = confirmed;
+        this.value = value;
+    }
+
+    @NotNull
+    public Value getValue() {
+        return value;
     }
 
     public boolean isConfirmed() {
-        return confirmed;
+        return value == Value.YES;
+    }
+
+    @Override
+    public String toString() {
+        return "ConfirmationAnswer{" +
+                "value=" + value +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

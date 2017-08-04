@@ -1,5 +1,6 @@
 package com.gianlu.consoleui;
 
+import com.gianlu.consoleui.Input.InputValidator;
 import com.sun.istack.internal.Nullable;
 import org.fusesource.jansi.Ansi;
 
@@ -9,10 +10,12 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public abstract class PromptableInputElement<A extends Answer> extends PromptableElement<A> {
     private final String text;
+    private final InputValidator validator;
 
-    public PromptableInputElement(String name, String text) {
+    public PromptableInputElement(String name, String text, @Nullable InputValidator validator) {
         super(name);
         this.text = text;
+        this.validator = validator;
     }
 
     @Nullable
@@ -31,12 +34,13 @@ public abstract class PromptableInputElement<A extends Answer> extends Promptabl
 
         String input = waitForInput(in);
         try {
+            if (validator != null) validator.validate(input);
             return publishAnswer(input);
         } catch (InvalidInputException ex) {
-            handleInvalidInput(input, out);
+            handleInvalidInput(input, out, ex);
             return prompt(out, in);
         }
     }
 
-    protected abstract void handleInvalidInput(@Nullable String input, PrintStream out);
+    protected abstract void handleInvalidInput(@Nullable String input, PrintStream out, InvalidInputException ex);
 }

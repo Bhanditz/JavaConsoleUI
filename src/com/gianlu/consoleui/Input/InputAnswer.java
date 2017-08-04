@@ -13,4 +13,12 @@ public class InputAnswer extends Answer {
     public String getAnswer() {
         return answer;
     }
+
+    @Override
+    public String toString() {
+        return "InputAnswer{" +
+                "answer='" + answer + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

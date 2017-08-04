@@ -12,24 +12,33 @@ import java.util.Objects;
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswer> {
-    private final boolean defaultVal;
+    private final Value defaultValue;
 
-    private ConfirmationPrompt(@NotNull String name, @NotNull String text, boolean defaultVal) {
-        super(name, text);
-        this.defaultVal = defaultVal;
+    private ConfirmationPrompt(@NotNull String name, @NotNull String text, @Nullable Value defaultValue) {
+        super(name, text, null);
+        this.defaultValue = defaultValue;
     }
 
     private String formatChoice() {
-        if (defaultVal) return "Y/n";
+        if (defaultValue == null) return "y/n";
+        else if (defaultValue == Value.YES) return "Y/n";
         else return "y/N";
     }
 
     @Override
     public ConfirmationAnswer publishAnswer(@Nullable String input) throws InvalidInputException {
-        if (input == null || input.isEmpty()) return new ConfirmationAnswer(name, defaultVal);
-        else if (Objects.equals(input.toLowerCase(), "y")) return new ConfirmationAnswer(name, true);
-        else if (Objects.equals(input.toLowerCase(), "n")) return new ConfirmationAnswer(name, false);
-        throw new InvalidInputException("Unhandled input: " + input);
+        if (input == null || input.isEmpty()) {
+            if (defaultValue == null) {
+                throw new InvalidInputException("Selected default value but default value isn't set!", false);
+            } else {
+                return new ConfirmationAnswer(name, defaultValue);
+            }
+        } else {
+            if (Objects.equals(input.toLowerCase(), "y")) return new ConfirmationAnswer(name, Value.YES);
+            else if (Objects.equals(input.toLowerCase(), "n")) return new ConfirmationAnswer(name, Value.NO);
+        }
+
+        throw new InvalidInputException("Unhandled input: " + input, false);
     }
 
     @Override
@@ -38,37 +47,35 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
     }
 
     @Override
-    protected void handleInvalidInput(@Nullable String input, PrintStream out) {
+    protected void handleInvalidInput(@Nullable String input, PrintStream out, InvalidInputException ex) {
         out.println(ansi().bg(Ansi.Color.RED).a("\"" + input + "\" is not a valid choice. Please enter Y or N."));
     }
 
     public static class Builder {
         private String name;
         private String text;
-        private boolean defaultVal;
+        private Value defaultValue;
 
         public Builder() {
         }
 
-        public Builder name(String name) {
+        public Builder name(@NotNull String name) {
             this.name = name;
             return this;
         }
 
-        public Builder text(String text) {
+        public Builder defaultValue(@Nullable Value defaultValue) {
+            this.defaultValue = defaultValue;
+            return this;
+        }
+
+        public Builder text(@NotNull String text) {
             this.text = text;
             return this;
         }
 
-        public Builder defaultVal(boolean defaultVal) {
-            this.defaultVal = defaultVal;
-            return this;
-        }
-
         public ConfirmationPrompt build() {
-            if (name == null) throw new IllegalArgumentException("name can't be null!");
-            if (text == null) throw new IllegalArgumentException("text can't be null!");
-            return new ConfirmationPrompt(name, text, defaultVal);
+            return new ConfirmationPrompt(name, text, defaultValue);
         }
     }
 }
