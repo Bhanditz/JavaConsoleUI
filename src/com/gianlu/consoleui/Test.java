@@ -24,10 +24,12 @@ public class Test {
                         .build(),
                 new InputPrompt.Builder()
                         .name("name")
+                        .required(true)
                         .text("What's your name?")
                         .build(),
                 new InputPrompt.Builder()
                         .name("website")
+                        .required(false)
                         .text("What's your website address?")
                         .validator(new InputValidator() {
                             @Override

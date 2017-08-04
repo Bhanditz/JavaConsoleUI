@@ -11,8 +11,11 @@ import java.io.PrintStream;
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class InputPrompt extends PromptableInputElement<InputAnswer> {
-    private InputPrompt(String name, String text, @Nullable InputValidator validator) {
+    private final boolean required;
+
+    private InputPrompt(String name, String text, @Nullable InputValidator validator, boolean required) {
         super(name, text, validator);
+        this.required = required;
     }
 
     @Override
@@ -26,6 +29,11 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
     }
 
     @Override
+    protected void validateInternal(String input) throws InvalidInputException {
+        if (required && (input == null || input.trim().isEmpty())) throw new InvalidInputException("Field is required!", true);
+    }
+
+    @Override
     protected void handleInvalidInput(String input, PrintStream out, InvalidInputException ex) {
         String msg = "\"" + input + "\" is not a valid input.";
         if (ex.isReason) msg += " Reason: " + ex.getMessage();
@@ -36,12 +44,18 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
         private String name;
         private String text;
         private InputValidator validator;
+        private boolean required = false;
 
         public Builder() {
         }
 
         public Builder name(@NotNull String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder required(boolean required) {
+            this.required = required;
             return this;
         }
 
@@ -56,7 +70,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
         }
 
         public InputPrompt build() {
-            return new InputPrompt(name, text, validator);
+            return new InputPrompt(name, text, validator, required);
         }
     }
 }

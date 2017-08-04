@@ -27,6 +27,9 @@ public abstract class PromptableInputElement<A extends Answer> extends Promptabl
 
     public abstract String formatText(String text);
 
+    protected void validateInternal(String input) throws InvalidInputException {
+    }
+
     @Override
     public final A prompt(PrintStream out, InputStream in) throws IOException {
         out.print(ansi().bg(Ansi.Color.DEFAULT).a(formatText(text)));
@@ -34,7 +37,8 @@ public abstract class PromptableInputElement<A extends Answer> extends Promptabl
 
         String input = waitForInput(in);
         try {
-            if (validator != null) validator.validate(input);
+            validateInternal(input);
+            if (validator != null && input != null && !input.isEmpty()) validator.validate(input);
             return publishAnswer(input);
         } catch (InvalidInputException ex) {
             handleInvalidInput(input, out, ex);
