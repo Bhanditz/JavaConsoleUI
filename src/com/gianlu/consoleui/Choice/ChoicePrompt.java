@@ -77,10 +77,7 @@ public class ChoicePrompt extends PromptableElement<ChoiceAnswer> {
     }
 
     private void handleInvalidInput(String input, PrintStream out, InvalidInputException ex) {
-        String msg = "\"" + input + "\" is not a valid choice.";
-        if (ex.isReason) msg += " Reason: " + ex.getMessage();
-        else msg += " Please enter one of the listed keys.";
-        out.println(ansi().bg(Ansi.Color.RED).a(msg));
+        out.println(ansi().bg(Ansi.Color.RED).a("\"" + input + "\" is not a valid choice. Please enter one of the listed keys."));
     }
 
     @Override

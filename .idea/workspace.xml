@@ -7,26 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fade3421-09fe-4026-b90d-a8bcad6afc7b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoicePrompt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Required.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Confirmation/ConfirmationAnswer.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Confirmation/ConfirmationAnswer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Confirmation/ConfirmationPrompt$Builder.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Confirmation/ConfirmationPrompt$Builder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Confirmation/ConfirmationPrompt.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Confirmation/ConfirmationPrompt.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Input/InputPrompt$Builder.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Input/InputPrompt$Builder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Input/InputPrompt.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Input/InputPrompt.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/PromptableElement.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/PromptableElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/PromptableInputElement.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/PromptableInputElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Test.class" afterPath="$PROJECT_DIR$/out/production/Java ConsoleUI/com/gianlu/consoleui/Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java ConsoleUI.iml" afterPath="$PROJECT_DIR$/Java ConsoleUI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Confirmation/ConfirmationAnswer.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Confirmation/ConfirmationAnswer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Confirmation/ConfirmationPrompt.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Confirmation/ConfirmationPrompt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Input/InputPrompt.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Input/InputPrompt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Input/InputValidator.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Input/InputValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/PromptableElement.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/PromptableElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/PromptableInputElement.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/PromptableInputElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Test.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoicePrompt.java" afterPath="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoicePrompt.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +24,8 @@
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+            <state relative-caret-position="6">
+              <caret line="24" column="48" lean-forward="true" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,8 +36,8 @@
       <file leaf-file-name="ChoicePrompt.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoicePrompt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="743">
-              <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+            <state relative-caret-position="499">
+              <caret line="84" column="90" lean-forward="true" selection-start-line="84" selection-start-column="90" selection-end-line="84" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,12 +102,12 @@
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ListChoicePrompt.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/PromptableElement.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Confirmation/ConfirmationAnswer.java" />
-        <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Required.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Input/InputPrompt.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Confirmation/ConfirmationPrompt.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Test.java" />
         <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoicePrompt.java" />
+        <option value="$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java" />
       </list>
     </option>
   </component>
@@ -338,7 +321,7 @@
       <workItem from="1501789769073" duration="787000" />
       <workItem from="1501832609289" duration="3512000" />
       <workItem from="1501839498659" duration="3232000" />
-      <workItem from="1501845700152" duration="2168000" />
+      <workItem from="1501845700152" duration="2362000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore and removed unused libraries">
       <created>1501836113194</created>
@@ -361,11 +344,18 @@
       <option name="project" value="LOCAL" />
       <updated>1501842724012</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created ChoicePrompt and moved to IntelliJ annotations">
+      <created>1501847899964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1501847899964</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9699000" />
+    <option name="totallyTimeSpent" value="9893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -444,7 +434,8 @@
     <MESSAGE value="Updated .gitignore and removed unused libraries" />
     <MESSAGE value="Added InputValidator" />
     <MESSAGE value="Added InputPrompt.Builder#required(boolean)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added InputPrompt.Builder#required(boolean)" />
+    <MESSAGE value="Created ChoicePrompt and moved to IntelliJ annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created ChoicePrompt and moved to IntelliJ annotations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -562,17 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#155#156#0" expanded="true" />
-            <element signature="e#182#183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/PromptableElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -633,18 +613,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoicePrompt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        <state relative-caret-position="499">
+          <caret line="84" column="90" lean-forward="true" selection-start-line="84" selection-start-column="90" selection-end-line="84" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/Choice/ChoiceAnswer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gianlu/consoleui/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+        <state relative-caret-position="6">
+          <caret line="24" column="48" lean-forward="true" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
