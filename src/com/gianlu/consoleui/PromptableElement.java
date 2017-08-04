@@ -17,7 +17,5 @@ public abstract class PromptableElement<A extends Answer> {
 
     protected abstract A publishAnswer(@Nullable String input) throws InvalidInputException;
 
-    protected interface GeneralBuilder<P extends PromptableElement<? extends Answer>> {
-        P build();
-    }
+
 }

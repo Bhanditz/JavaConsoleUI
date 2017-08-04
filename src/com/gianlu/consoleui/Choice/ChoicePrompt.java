@@ -16,33 +16,19 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public class ChoicePrompt extends PromptableElement<ChoiceAnswer> {
     private final String text;
-    private final List<Item> items;
+    private final List<ChoiceItem> items;
 
-    public ChoicePrompt(String name, String text, List<Item> items) {
+    public ChoicePrompt(String name, String text, List<ChoiceItem> items) {
         super(name);
         this.text = text;
         this.items = items;
-    }
-
-    private static boolean validateItems(List<Item> items) {
-        for (int j = 0; j < items.size(); j++) {
-            for (int k = j + 1; k < items.size(); k++) {
-                Item kItem = items.get(k);
-                Item jItem = items.get(j);
-
-                if (k != j && (Objects.equals(kItem.name, jItem.name) || kItem.key == jItem.key))
-                    return false;
-            }
-        }
-
-        return true;
     }
 
     @NotNull
     private String joinItems() {
         StringBuilder builder = new StringBuilder();
         boolean first = true;
-        for (Item item : items) {
+        for (ChoiceItem item : items) {
             if (!first) builder.append(", ");
             first = false;
 
@@ -83,51 +69,31 @@ public class ChoicePrompt extends PromptableElement<ChoiceAnswer> {
     @Override
     protected ChoiceAnswer publishAnswer(String input) throws InvalidInputException {
         if (input.length() != 1) throw new InvalidInputException("Invalid input!", false);
-        for (Item item : items)
+        for (ChoiceItem item : items)
             if (item.key == input.charAt(0))
                 return new ChoiceAnswer(item.name);
 
         throw new InvalidInputException("Invalid key!", false);
     }
 
-    public static class Item {
-        private final Builder builder;
+    public static class Builder extends ListBuilder<ChoicePrompt, ChoiceItem> {
+        public List<ChoiceItem> items;
         private String name;
         private String text;
-        private char key;
 
-        public Item(Builder builder) {
-            this.builder = builder;
+        private boolean validateItems() {
+            for (int j = 0; j < items.size(); j++) {
+                for (int k = j + 1; k < items.size(); k++) {
+                    ChoiceItem kItem = items.get(k);
+                    ChoiceItem jItem = items.get(j);
+
+                    if (k != j && (Objects.equals(kItem.name, jItem.name) || kItem.key == jItem.key))
+                        return false;
+                }
+            }
+
+            return true;
         }
-
-        @Required
-        public Item name(@NotNull String name) {
-            this.name = name;
-            return this;
-        }
-
-        @Required
-        public Item text(@NotNull String text) {
-            this.text = text;
-            return this;
-        }
-
-        @Required
-        public Item key(char key) {
-            this.key = key;
-            return this;
-        }
-
-        public Builder add() {
-            builder.items.add(this);
-            return builder;
-        }
-    }
-
-    public static class Builder implements GeneralBuilder<ChoicePrompt> {
-        private String name;
-        private List<Item> items;
-        private String text;
 
         public Builder() {
             items = new ArrayList<>();
@@ -138,13 +104,14 @@ public class ChoicePrompt extends PromptableElement<ChoiceAnswer> {
             return this;
         }
 
-        public Item newItem() {
-            return new Item(this);
+        @Override
+        public ChoiceItem newItem() {
+            return new ChoiceItem(this);
         }
 
         @Override
         public ChoicePrompt build() {
-            if (!validateItems(items)) throw new IllegalArgumentException("Cannot have duplicated names or keys!");
+            if (!validateItems()) throw new IllegalArgumentException("Cannot have duplicated names or keys!");
             return new ChoicePrompt(name, text, items);
         }
 

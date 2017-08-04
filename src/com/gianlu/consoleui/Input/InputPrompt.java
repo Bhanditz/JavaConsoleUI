@@ -1,5 +1,6 @@
 package com.gianlu.consoleui.Input;
 
+import com.gianlu.consoleui.Builders.GeneralBuilder;
 import com.gianlu.consoleui.Choice.ChoicePrompt;
 import com.gianlu.consoleui.InvalidInputException;
 import com.gianlu.consoleui.PromptableInputElement;
