@@ -49,6 +49,7 @@ public class Test {
                 new InputPrompt.Builder()
                         .name("website")
                         .required(false)
+                        .defaultValue("http://example.com")
                         .text("What's your website address?")
                         .validator(new InputValidator() {
                             @Override

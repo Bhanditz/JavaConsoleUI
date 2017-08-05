@@ -1,39 +1,49 @@
 package com.gianlu.consoleui.Input;
 
 import com.gianlu.consoleui.Builders.GeneralBuilder;
-import com.gianlu.consoleui.Choice.ChoicePrompt;
 import com.gianlu.consoleui.InvalidInputException;
 import com.gianlu.consoleui.PromptableInputElement;
 import com.gianlu.consoleui.Required;
+import org.fusesource.jansi.Ansi;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.fusesource.jansi.Ansi;
 
 import java.io.PrintStream;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class InputPrompt extends PromptableInputElement<InputAnswer> {
+    private final String defaultValue;
     private final boolean required;
 
-    private InputPrompt(String name, String text, @Nullable InputValidator validator, boolean required) {
+    private InputPrompt(String name, String text, @Nullable InputValidator validator, @Nullable String defaultValue, boolean required) {
         super(name, text, validator);
+        this.defaultValue = defaultValue;
         this.required = required;
     }
 
     @Override
     public String formatText(String text) {
-        return "? " + text + " ";
+        return "? " + text + (defaultValue != null ? (" (" + defaultValue + ") ") : " ");
     }
 
     @Override
     protected InputAnswer publishAnswer(String input) throws InvalidInputException {
-        return new InputAnswer(name, input);
+        if (input == null || input.isEmpty()) {
+            if (defaultValue == null) {
+                throw new InvalidInputException("Selected default value but default value isn't set!", false);
+            } else {
+                return new InputAnswer(name, defaultValue);
+            }
+        } else {
+            return new InputAnswer(name, input);
+        }
     }
 
     @Override
     protected void validateInternal(String input) throws InvalidInputException {
-        if (required && (input == null || input.trim().isEmpty())) throw new InvalidInputException("Field is required!", true);
+        if (required && (input == null || input.trim().isEmpty()))
+            throw new InvalidInputException("Field is required!", true);
     }
 
     @Override
@@ -48,6 +58,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
         private String text;
         private InputValidator validator;
         private boolean required = false;
+        private String defaultValue;
 
         public Builder() {
         }
@@ -55,6 +66,11 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
         @Required
         public Builder name(@NotNull String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder defaultValue(@Nullable String defaultValue) {
+            this.defaultValue = defaultValue;
             return this;
         }
 
@@ -76,7 +92,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
 
         @Override
         public InputPrompt build() {
-            return new InputPrompt(name, text, validator, required);
+            return new InputPrompt(name, text, validator, defaultValue, required);
         }
     }
 }
