@@ -8,6 +8,8 @@ import com.gianlu.consoleui.Required;
 import org.fusesource.jansi.Ansi;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jline.terminal.Terminal;
+import org.jline.terminal.TerminalBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +27,8 @@ public class ListChoicePrompt extends PromptableElement<ChoiceAnswer> {
         super(name);
         this.text = text;
         this.items = items;
+
+        throw new UnsupportedOperationException("This hasn't been implemented yet");
     }
 
     @Override
@@ -33,7 +37,15 @@ public class ListChoicePrompt extends PromptableElement<ChoiceAnswer> {
         for (ListChoiceItem item : items) out.println(ansi().bg(Ansi.Color.DEFAULT).a("> " + item.text));
         out.flush();
 
-        return null; // TODO: We need to intercept key events
+        Terminal terminal = TerminalBuilder.builder().streams(System.in, System.out).build();
+        terminal.enterRawMode(); // FIXME: This should allow us to read single characters
+
+        while (true) {
+            int read = terminal.reader().read();
+            if (read != -1) System.out.print((char) read);
+        }
+
+        // return null;
     }
 
     @Override
