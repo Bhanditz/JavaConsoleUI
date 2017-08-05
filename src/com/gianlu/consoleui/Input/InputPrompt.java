@@ -42,7 +42,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
 
     @Override
     protected void validateInternal(String input) throws InvalidInputException {
-        if (required && (input == null || input.trim().isEmpty()))
+        if (required && (input == null || input.trim().isEmpty()) && defaultValue == null)
             throw new InvalidInputException("Field is required!", true);
     }
 
