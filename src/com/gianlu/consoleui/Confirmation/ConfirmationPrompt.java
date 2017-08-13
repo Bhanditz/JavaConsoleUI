@@ -1,13 +1,12 @@
 package com.gianlu.consoleui.Confirmation;
 
 import com.gianlu.consoleui.Builders.GeneralBuilder;
-import com.gianlu.consoleui.Choice.ChoicePrompt;
 import com.gianlu.consoleui.InvalidInputException;
 import com.gianlu.consoleui.PromptableInputElement;
 import com.gianlu.consoleui.Required;
+import org.fusesource.jansi.Ansi;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.fusesource.jansi.Ansi;
 
 import java.io.PrintStream;
 import java.util.Objects;
@@ -46,7 +45,7 @@ public class ConfirmationPrompt extends PromptableInputElement<ConfirmationAnswe
 
     @Override
     public String formatText(String text) {
-        return "? " + text + " (" + formatChoice() + "): ";
+        return "? " + text + " [" + formatChoice() + "]: ";
     }
 
     @Override

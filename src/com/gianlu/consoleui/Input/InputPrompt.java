@@ -24,7 +24,7 @@ public class InputPrompt extends PromptableInputElement<InputAnswer> {
 
     @Override
     public String formatText(String text) {
-        return "? " + text + (defaultValue != null ? (" (" + defaultValue + ") ") : " ");
+        return "? " + text + (defaultValue != null ? (" [" + defaultValue + "] ") : " ");
     }
 
     @Override

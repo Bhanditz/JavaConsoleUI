@@ -33,9 +33,9 @@ public class ChoicePrompt extends PromptableElement<ChoiceAnswer> {
             first = false;
 
             builder.append(item.text)
-                    .append(" (")
+                    .append(" [")
                     .append(item.key)
-                    .append(")");
+                    .append("]");
         }
 
         return builder.toString();

@@ -1,6 +1,7 @@
 package com.gianlu.consoleui;
 
 import com.gianlu.consoleui.Choice.ChoicePrompt;
+import com.gianlu.consoleui.Choice.List.ListChoicePrompt;
 import com.gianlu.consoleui.Confirmation.ConfirmationPrompt;
 import com.gianlu.consoleui.Confirmation.Value;
 import com.gianlu.consoleui.Input.InputPrompt;
@@ -36,16 +37,15 @@ public class Test {
                         .newItem().name("female").key('f').text("Female").add()
                         .newItem().name("unknown").key('u').text("Unknown").add()
                         .build(),
-                /*
                 new ListChoicePrompt.Builder()
                         .name("pizza")
                         .text("What's your favourite drink?")
+                        .defaultValue("water")
                         .newItem().name("cola").text("Cola").add()
                         .newItem().name("beer").text("Beer").add()
                         .newItem().name("wine").text("Wine").add()
                         .newItem().name("water").text("Water").add()
                         .build(),
-                        */
                 new InputPrompt.Builder()
                         .name("website")
                         .required(false)
